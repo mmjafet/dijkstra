@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Camino Más Corto</title>
+    <!-- Bootstrap para estilos -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Calculador de Camino Más Corto</h1>
+
+        <!-- Incluir la imagen -->
+        <div class="text-center">
+            <img src="{{ url_for('static', filename='img/nodos.png') }}" alt="Imagen de ejemplo" class="img-fluid">
+        </div>
+
+        <!-- Formulario para ingresar nodos -->
+        <form method="POST" class="mt-3">
+            <div class="form-group">
+                <label for="inicio">Nodo de inicio:</label>
+                <input type="text" id="inicio" name="inicio" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fin">Nodo de fin:</label>
+                <input type="text" id="fin" name="fin" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Calcular</button>
+        </form>
+
+        <!-- Mostrar resultado si existe -->
+        {% if resultado %}
+        <div class="mt-4">
+            <h2>Resultado:</h2>
+            <p>Camino más corto: {{ resultado.camino }}</p>
+            <p>Costo total: {{ resultado.costo }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
